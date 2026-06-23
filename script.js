@@ -97,6 +97,21 @@ function flashEffect(type) {
     }, 400);
 }
 
+document.addEventListener(
+    "click",
+    () => {
+
+        const music =
+        document.getElementById("bgMusic");
+
+        music.volume = 0.4;
+
+        music.play();
+
+    },
+    { once:true }
+);
+
 // ===================================================
 // SPLASH
 // ===================================================
@@ -105,13 +120,24 @@ setTimeout(() => {
     document.getElementById('start-screen').classList.remove('hidden');
 }, 3000);
 
-function showMenu() {
-    playSound('click');
-    document.getElementById('start-screen').classList.add('hidden');
-    document.getElementById('menu-screen').classList.remove('hidden');
+function showMenu(){
+
+    const music =
+    document.getElementById("bgMusic");
+
+    music.volume = 0.4;
+
+    music.play();
+
+    document
+        .getElementById("start-screen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("menu-screen")
+        .classList.remove("hidden");
+
     loadBestScore();
-    document.querySelector('.hamburger').style.display = 'flex';
-    document.querySelector('.back-btn').style.display = 'flex';
 }
 
 // ===================================================
