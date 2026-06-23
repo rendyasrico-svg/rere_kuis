@@ -1,0 +1,510 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.25) 3px, transparent 4px),
+        radial-gradient(circle at 85% 30%, rgba(255,255,255,.15) 4px, transparent 5px),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,.2) 3px, transparent 4px),
+        radial-gradient(circle at 25% 75%, rgba(255,255,255,.15) 5px, transparent 6px),
+        linear-gradient(135deg, #081f5c, #1746d3, #2563eb, #38bdf8);
+}
+
+/* ========== SPLASH SCREEN ========== */
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+}
+
+.logo-box h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.logo-box p {
+    opacity: .8;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    margin: 25px auto;
+    border: 5px solid rgba(255,255,255,.2);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ========== START SCREEN ========== */
+#start-screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ========== GLASS CARD ========== */
+.glass-card {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 35px;
+    padding: 30px;
+    box-shadow: 0 10px 50px rgba(0,0,0,.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeInScale 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: background 0.3s ease !important;
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.glass-card.flash-correct {
+    background: rgba(34, 197, 94, 0.25) !important;
+}
+.glass-card.flash-wrong {
+    background: rgba(239, 68, 68, 0.25) !important;
+}
+.glass-card.flash-neutral {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ========== LOGO ========== */
+.intro-logo {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    animation: logoFloat 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,.3));
+    transform: none;
+}
+
+@keyframes logoFloat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* ========== TITLE & SUBTITLE ========== */
+.title {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    opacity: .8;
+    margin-bottom: 30px;
+}
+
+/* ========== BUTTONS ========== */
+.menu-btn,
+.submit-btn {
+    width: 100%;
+    border: none;
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.menu-btn:hover,
+.submit-btn:hover {
+    transform: scale(1.02);
+}
+
+.easy {
+    background: #22c55e;
+    color: white;
+}
+
+.medium {
+    background: #facc15;
+    color: black;
+}
+
+.hard {
+    background: #ef4444;
+    color: white;
+}
+
+.submit-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .3s;
+}
+
+.start-btn:hover {
+    transform: scale(1.03);
+}
+
+.share-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.share-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* ========== LEADERBOARD ========== */
+.leaderboard-box {
+    margin-top: 35px;
+    text-align: center;
+}
+
+#bestScore {
+    font-size: 55px;
+    color: gold;
+    font-weight: bold;
+}
+
+/* ========== STATISTIK ========== */
+.result-stats {
+    font-size: 14px;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 12px 16px;
+    border-radius: 15px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* ========== GAME SCREEN ========== */
+.top-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.score-box,
+.timer-box {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.timer-box {
+    color: #facc15;
+}
+
+.life-box {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,.15);
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #38bdf8);
+    transition: .5s;
+}
+
+.question-card {
+    background: rgba(255,255,255,.08);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#question {
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+.answer-area {
+    width: 100%;
+}
+
+#answerInput {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 18px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+#message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* ========== RESULT SCREEN ========== */
+#finalScore {
+    text-align: center;
+    font-size: 80px;
+    color: gold;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* ========== HAMBURGER & SIDE MENU ========== */
+.hamburger {
+    display: none; /* default sembunyi */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    z-index: 999999;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100vh;
+    background: rgba(15, 23, 42, .95);
+    backdrop-filter: blur(20px);
+    transition: .4s;
+    padding: 25px;
+    z-index: 9998;
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.side-menu h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.side-menu button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transition: 0.3s;
+}
+
+.side-menu button:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.sound-toggle {
+    font-size: 24px !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+.sound-toggle:hover {
+    background: rgba(255,255,255,0.2) !important;
+    transform: scale(1.05);
+}
+
+/* ========== BACK BUTTON ========== */
+.back-btn {
+    display: none; /* default sembunyi */
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 18px;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(15px);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999999;
+    transition: .3s;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.2);
+}
+
+.back-btn:active {
+    transform: scale(.95);
+}
+
+/* ========== KONFETTI ========== */
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-10px);}
+    50%{transform:translateX(10px);}
+    75%{transform:translateX(-10px);}
+    100%{transform:translateX(0);}
+}
+
+.shake{
+
+    animation:shake .4s;
+}
+
+/* ========== SCREEN LAINNYA ========== */
+#menu-screen,
+#game-screen,
+#result-screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .title { font-size: 38px; }
+    #question { font-size: 18px; }
+    .menu-btn, .submit-btn { font-size: 18px; }
+    .glass-card { padding: 25px; }
+    .intro-logo { width: 130px; height: 130px; }
+    #finalScore { font-size: 60px; }
+    .back-btn { width: 45px; height: 45px; top: 15px; left: 15px; }
+    .hamburger { width: 45px; height: 45px; top: 15px; right: 15px; font-size: 24px; }
+    .side-menu { width: 240px; }
+}
+
+/* ========== OVERLAY SALAH ========== */
+.wrong-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    z-index: 99999;
+    pointer-events: none;
+}
+
+.wrong-overlay-icon {
+    width: 140px;
+    height: 140px;
+    background: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 72px;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 0 0 80px rgba(239, 68, 68, 0.4);
+    animation: iconPop 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes iconPop {
+    0%   { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+    70%  { transform: scale(1.15) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.wrong-overlay-text {
+    margin-top: 16px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #ef4444;
+    letter-spacing: 4px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    animation: iconPop 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes shakeOverlay {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(-14px); }
+    40%  { transform: translateX(14px); }
+    60%  { transform: translateX(-10px); }
+    80%  { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.wrong-overlay.shake-overlay .wrong-overlay-icon {
+    animation: iconPop 0.2s cubic-bezier(0.23, 1, 0.32, 1), shakeOverlay 0.4s ease;
+}
